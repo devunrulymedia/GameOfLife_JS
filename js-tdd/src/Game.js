@@ -1,6 +1,19 @@
-GameOfLife = {}
+GameOfLife = {};
 
-GameOfLife.Game = function () {};
+GameOfLife.Cell = function (numberOfLivingNeighbours) {
 
-GameOfLife.Game.prototype.startGame = function(generation) {
+            this.liveNeighbours = function (iterationNumber) {
+                return numberOfLivingNeighbours;
+            }
+
+            this.isDead = function (iterationNumber) {
+                return iterationNumber !== 0
+            }
+};
+
+GameOfLife.Game = function () {
+
+};
+
+GameOfLife.Game.prototype.startGame = function (generation) {
 };

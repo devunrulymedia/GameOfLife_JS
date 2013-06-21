@@ -3,3 +3,4 @@ load:
   - test/GameTest.js
 
 test:
+ - test/*.js
