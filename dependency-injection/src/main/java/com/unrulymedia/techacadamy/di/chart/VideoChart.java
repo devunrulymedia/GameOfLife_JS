@@ -1,5 +1,8 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.chart;
 
+import com.unrulymedia.techacadamy.di.Video;
+import com.unrulymedia.techacadamy.di.services.TwitterVideoFinder;
+import com.unrulymedia.techacadamy.di.services.VideoFinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,12 +13,11 @@ import java.util.List;
 @Component
 public class VideoChart
 {
-    @Autowired FacebookVideoFinder facebookVideoFinder;
-    @Autowired TwitterVideoFinder twitterVideoFinder;
+    @Autowired VideoFinder facebookVideoFinder;
+    @Autowired VideoFinder twitterVideoFinder;
 
     public static void main( String[] args )
     {
-        System.out.println( "I'm a Video Chart" );
 
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("app-context.xml");
         VideoChart videoChart = applicationContext.getBean(VideoChart.class);

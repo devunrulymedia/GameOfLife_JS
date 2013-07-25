@@ -1,13 +1,13 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.services;
 
+import com.unrulymedia.techacadamy.di.Video;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class FacebookVideoFinder {
+public class FacebookVideoFinder implements VideoFinder{
 
     public List<Video> findVideosByTopShares() {
         System.out.println("Getting facebook videos with top shares....");

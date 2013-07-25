@@ -1,5 +1,6 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.services;
 
+import com.unrulymedia.techacadamy.di.Video;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

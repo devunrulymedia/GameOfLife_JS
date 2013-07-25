@@ -1,4 +1,4 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.chart;
 
 public enum ChartType {
     TOP_SHARES_CHART,

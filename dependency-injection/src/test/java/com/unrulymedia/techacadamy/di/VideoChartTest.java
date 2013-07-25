@@ -1,38 +1,56 @@
 package com.unrulymedia.techacadamy.di;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.unrulymedia.techacadamy.di.chart.ChartType;
+import com.unrulymedia.techacadamy.di.chart.VideoChart;
+import org.junit.Test;
+import org.junit.Before;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Unit test for simple VideoChart.
- */
+import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 public class VideoChartTest
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public VideoChartTest(String testName)
-    {
-        super( testName );
+    VideoChart videoChart;
+
+    @Before
+    public void setup() {
+        ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("test-app-context.xml");
+        videoChart = applicationContext.getBean(VideoChart.class);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( VideoChartTest.class );
+    @Test
+    public void testFacebookVideoChartTopShares() {
+        List<Video> topSharedFacebookVideos = videoChart.findFacebookVideos(ChartType.TOP_SHARES_CHART);
+
+        assertNotNull(topSharedFacebookVideos);
+        assertTrue(topSharedFacebookVideos.size() == 1);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void testFacebookVideoChartTopViewsAndShares() {
+        List<Video> topViewedAndSharedFacebookVideos = videoChart.findFacebookVideos(ChartType.ALL_CHARTS);
+
+        assertNotNull(topViewedAndSharedFacebookVideos);
+        assertTrue(topViewedAndSharedFacebookVideos.size() > 1);
+    }
+
+    @Test
+    public void testTwitterVideoChartTopShares() {
+        List<Video> topSharedTwitterVideos = videoChart.findTwitterVideos(ChartType.TOP_SHARES_CHART);
+
+        assertNotNull(topSharedTwitterVideos);
+        assertTrue(topSharedTwitterVideos.size() == 1);
+    }
+
+    @Test
+    public void testTwitterVideoChartTopViewsAndShares() {
+        List<Video> topViewedAndSharedTwitterVideos = videoChart.findTwitterVideos(ChartType.ALL_CHARTS);
+
+        assertNotNull(topViewedAndSharedTwitterVideos);
+        assertTrue(topViewedAndSharedTwitterVideos.size() > 1);
     }
 }
