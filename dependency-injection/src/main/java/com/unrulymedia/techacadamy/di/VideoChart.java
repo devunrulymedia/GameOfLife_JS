@@ -19,23 +19,46 @@ public class VideoChart
 
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("app-context.xml");
         VideoChart videoChart = applicationContext.getBean(VideoChart.class);
-        videoChart.findFacebookVideos();
-        videoChart.findTwitterVideos();
+
+        System.out.println(">>>>>>>> Charts for top views");
+        printVideoDetails(videoChart.findFacebookVideos(ChartType.TOP_VIEWS_CHART));
+        printVideoDetails(videoChart.findTwitterVideos(ChartType.TOP_VIEWS_CHART));
+
+        System.out.println(">>>>>>>>> Charts for top shares");
+        printVideoDetails(videoChart.findFacebookVideos(ChartType.TOP_SHARES_CHART));
+        printVideoDetails(videoChart.findTwitterVideos(ChartType.TOP_SHARES_CHART));
     }
 
     public VideoChart() {
 
     }
 
-    public void findFacebookVideos() {
+    public List<Video> findFacebookVideos(ChartType chartType) {
 //        facebookVideoFinder = new FacebookVideoFinder();
 
-        List<Video> facebookVideos = facebookVideoFinder.findVideosByTopShares();
-        printVideoDetails(facebookVideos);
+        if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
+            return facebookVideoFinder.findVideosByTopShares();
+        } else if(ChartType.TOP_VIEWS_CHART.equals(chartType)) {
+            return facebookVideoFinder.findVideosByTopViews();
+        } else {
+            return facebookVideoFinder.findVideosByTopViewsAndShares();
+        }
 
     }
 
-    private void printVideoDetails(List<Video> videoList) {
+    public List<Video> findTwitterVideos(ChartType chartType) {
+//        twitterVideoFinder = new TwitterVideoFinder();
+
+        if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
+            return twitterVideoFinder.findVideosByTopShares();
+        } else if(ChartType.TOP_VIEWS_CHART.equals(chartType)) {
+            return twitterVideoFinder.findVideosByTopViews();
+        } else {
+            return twitterVideoFinder.findVideosByTopViewsAndShares();
+        }
+    }
+
+    private static void printVideoDetails(List<Video> videoList) {
         for(Video video: videoList) {
             System.out.println("----------------------------------");
             System.out.println("The Video Ref : "+ video.videoRef);
@@ -43,8 +66,4 @@ public class VideoChart
         }
     }
 
-    public void findTwitterVideos() {
-//        twitterVideoFinder = new TwitterVideoFinder();
-        List<Video> twitterVideos = twitterVideoFinder.findVideosByTopShares();
-    }
 }
