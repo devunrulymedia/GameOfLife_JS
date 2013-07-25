@@ -1,4 +1,6 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.services;
+
+import com.unrulymedia.techacadamy.di.Video;
 
 import java.util.Arrays;
 import java.util.List;

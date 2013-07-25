@@ -1,4 +1,9 @@
-package com.unrulymedia.techacadamy.di;
+package com.unrulymedia.techacadamy.di.chart;
+
+import com.unrulymedia.techacadamy.di.Video;
+import com.unrulymedia.techacadamy.di.chart.ChartType;
+import com.unrulymedia.techacadamy.di.services.FacebookVideoFinder;
+import com.unrulymedia.techacadamy.di.services.TwitterVideoFinder;
 
 import java.util.List;
 

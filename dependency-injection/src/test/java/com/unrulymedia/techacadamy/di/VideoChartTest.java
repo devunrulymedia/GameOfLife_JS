@@ -1,5 +1,7 @@
 package com.unrulymedia.techacadamy.di;
 
+import com.unrulymedia.techacadamy.di.chart.ChartType;
+import com.unrulymedia.techacadamy.di.chart.VideoChart;
 import org.junit.Test;
 
 import java.util.List;
