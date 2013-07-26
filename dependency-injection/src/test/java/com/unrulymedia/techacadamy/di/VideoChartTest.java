@@ -4,6 +4,7 @@ import com.unrulymedia.techacadamy.di.chart.ChartType;
 import com.unrulymedia.techacadamy.di.chart.VideoChart;
 import org.junit.Test;
 import org.junit.Before;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +19,7 @@ public class VideoChartTest
 
     @Before
     public void setup() {
-        ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("test-app-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("test-app-context.xml");
         videoChart = applicationContext.getBean(VideoChart.class);
     }
 
