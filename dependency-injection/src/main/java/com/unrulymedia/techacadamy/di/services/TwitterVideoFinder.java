@@ -5,7 +5,7 @@ import com.unrulymedia.techacadamy.di.Video;
 import java.util.Arrays;
 import java.util.List;
 
-public class TwitterVideoFinder {
+public class TwitterVideoFinder implements VideoFinder {
     public List<Video> findVideosByTopShares() {
         System.out.println("Getting twitter videos with top shares....");
         Video video1 = new Video("twitterV1ref", "www.twitter.com/videos/twv1");

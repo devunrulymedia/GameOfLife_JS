@@ -5,8 +5,9 @@ import com.unrulymedia.techacadamy.di.Video;
 import java.util.Arrays;
 import java.util.List;
 
-public class FacebookVideoFinder {
+public class FacebookVideoFinder implements VideoFinder {
 
+    @Override
     public List<Video> findVideosByTopShares() {
         System.out.println("Getting facebook videos with top shares....");
         Video video1 = new Video("v1ref", "www.facebook.com/videos/v1");
@@ -16,6 +17,7 @@ public class FacebookVideoFinder {
         return Arrays.asList(video1, video2, video3);
     }
 
+    @Override
     public List<Video> findVideosByTopViews() {
         System.out.println("Getting facebook videos with top views....");
         Video video1 = new Video("v4ref", "www.facebook.com/videos/v4");
@@ -25,6 +27,7 @@ public class FacebookVideoFinder {
         return Arrays.asList(video1, video2, video3);
     }
 
+    @Override
     public List<Video> findVideosByTopViewsAndShares() {
         System.out.println("Getting facebook videos with top views and shares....");
         Video video1 = new Video("v1ref", "www.facebook.com/videos/v1");
