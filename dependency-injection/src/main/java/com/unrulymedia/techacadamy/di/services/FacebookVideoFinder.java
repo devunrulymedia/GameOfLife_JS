@@ -5,7 +5,7 @@ import com.unrulymedia.techacadamy.di.Video;
 import java.util.Arrays;
 import java.util.List;
 
-public class FacebookVideoFinder {
+public class FacebookVideoFinder implements VideoFinder {
 
     public List<Video> findVideosByTopShares() {
         System.out.println("Getting facebook videos with top shares....");

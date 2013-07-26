@@ -4,13 +4,14 @@ import com.unrulymedia.techacadamy.di.Video;
 import com.unrulymedia.techacadamy.di.chart.ChartType;
 import com.unrulymedia.techacadamy.di.services.FacebookVideoFinder;
 import com.unrulymedia.techacadamy.di.services.TwitterVideoFinder;
+import com.unrulymedia.techacadamy.di.services.VideoFinder;
 
 import java.util.List;
 
 public class VideoChart
 {
-    FacebookVideoFinder facebookVideoFinder;
-    TwitterVideoFinder twitterVideoFinder;
+    VideoFinder facebookVideoFinder;
+    VideoFinder twitterVideoFinder;
 
     public static void main( String[] args )
     {
