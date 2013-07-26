@@ -36,7 +36,6 @@ public class VideoChart
     }
 
     public List<Video> findFacebookVideos(ChartType chartType) {
-//        facebookVideoFinder = new FacebookVideoFinder();
 
         if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
             return facebookVideoFinder.findVideosByTopShares();
@@ -49,7 +48,6 @@ public class VideoChart
     }
 
     public List<Video> findTwitterVideos(ChartType chartType) {
-//        twitterVideoFinder = new TwitterVideoFinder();
 
         if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
             return twitterVideoFinder.findVideosByTopShares();
