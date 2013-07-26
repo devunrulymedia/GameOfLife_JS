@@ -1,21 +1,33 @@
 package com.unrulymedia.techacadamy.di.chart;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.unrulymedia.techacadamy.di.Video;
 import com.unrulymedia.techacadamy.di.chart.ChartType;
 import com.unrulymedia.techacadamy.di.services.FacebookVideoFinder;
 import com.unrulymedia.techacadamy.di.services.TwitterVideoFinder;
 import com.unrulymedia.techacadamy.di.services.VideoFinder;
 
+import javax.inject.Inject;
 import java.util.List;
+
+import static com.unrulymedia.techacadamy.di.chart.VideoChartModule.*;
+
 
 public class VideoChart
 {
+    @Inject
+    @Facebook
     VideoFinder facebookVideoFinder;
+
+    @Inject
+    @Twitter
     VideoFinder twitterVideoFinder;
 
     public static void main( String[] args )
     {
-        VideoChart videoChart = new VideoChart();
+        Injector injector = Guice.createInjector(new VideoChartModule());
+        VideoChart videoChart = injector.getInstance(VideoChart.class);
         System.out.println(">>>>>>>> Charts for top views");
         printVideoDetails(videoChart.findFacebookVideos(ChartType.TOP_VIEWS_CHART));
         printVideoDetails(videoChart.findTwitterVideos(ChartType.TOP_VIEWS_CHART));
@@ -26,8 +38,6 @@ public class VideoChart
     }
 
     public List<Video> findFacebookVideos(ChartType chartType) {
-        facebookVideoFinder = new FacebookVideoFinder();
-
         if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
             return facebookVideoFinder.findVideosByTopShares();
         } else if(ChartType.TOP_VIEWS_CHART.equals(chartType)) {
@@ -39,8 +49,6 @@ public class VideoChart
     }
 
     public List<Video> findTwitterVideos(ChartType chartType) {
-        twitterVideoFinder = new TwitterVideoFinder();
-
         if(ChartType.TOP_SHARES_CHART.equals(chartType)) {
             return twitterVideoFinder.findVideosByTopShares();
         } else if(ChartType.TOP_VIEWS_CHART.equals(chartType)) {
